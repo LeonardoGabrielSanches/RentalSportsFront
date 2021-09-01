@@ -1,7 +1,12 @@
 import { Box, HStack, IconButton, Link, Stack } from "@chakra-ui/react";
 import { FaWhatsapp } from "react-icons/fa";
 
-export function CardBody() {
+type CardBodyProps = {
+    description: string;
+    mobile_number: string;
+}
+
+export function CardBody({ description, mobile_number }: CardBodyProps) {
     return (
         <Stack mt="2" height="65%" justify="space-between">
             <Box
@@ -10,8 +15,7 @@ export function CardBody() {
                 lineHeight="tight"
                 noOfLines={3}
             >
-                Uma breve descrição sobre o jogador.
-
+                {description}
             </Box>
 
             <HStack justifyContent="space-between">
@@ -21,7 +25,7 @@ export function CardBody() {
                     Disponibilidade: Segunda a sexta de tal a tal.
                 </Box>
 
-                <Link href="http://api.whatsapp.com/send?phone=+5515996932204">
+                <Link href={`http://api.whatsapp.com/send?phone=+55${mobile_number}`}>
                     <IconButton
                         aria-label="whatsapp"
                         background="transparent"

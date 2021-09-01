@@ -1,16 +1,19 @@
 import { Flex, Box, Text, Avatar, Link } from '@chakra-ui/react'
+import { useAuth } from '../../contexts/AuthContext'
 
 
 export function Profile() {
+    const { user } = useAuth();
+
     return (
         <Flex align="center">
 
             <Box mr="4" textAlign="right">
                 <Link href="/">
-                    <Text>Gabriel Gurris</Text>
+                    <Text>{user?.name}</Text>
                 </Link>
                 <Text color="gray.300" fontSize="small">
-                    gabriel.gurris@gmail.com
+                    {user?.email}
                 </Text>
             </Box>
 

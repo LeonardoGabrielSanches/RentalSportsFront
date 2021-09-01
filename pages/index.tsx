@@ -69,7 +69,14 @@ const Login: NextPage = () => {
             error={formState.errors.password}
           />
 
-          <Button type="submit" mt="6" colorScheme="green" size="lg" isLoading={formState.isSubmitting}>
+          <Button
+            type="submit"
+            mt="6"
+            colorScheme="green"
+            size="lg"
+            isLoading={formState.isSubmitting}
+            loadingText="Enviando..."
+          >
             Entrar
           </Button>
         </Stack>

@@ -8,7 +8,7 @@ export function Logo() {
             letterSpacing="tight"
             w="64"
         >
-            LugaGol
+            Alugol
             <Text as="span" ml="1" color="green.500">.</Text>
         </Text>
     )

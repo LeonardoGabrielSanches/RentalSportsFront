@@ -1,13 +1,18 @@
 import { Avatar, Box, HStack, WrapItem } from "@chakra-ui/react";
 
-export function CardHeader() {
+type CardHeaderProps = {
+    name: string;
+    avatar_url: string;
+}
+
+export function CardHeader({ name, avatar_url }: CardHeaderProps) {
     return (
         <HStack>
             <WrapItem>
                 <Avatar
                     size="xl"
-                    name="Leonardo Sanches"
-                    src="https://scontent.fcpq4-1.fna.fbcdn.net/v/t1.6435-9/91973803_2823638084338334_8492579082242883584_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=Eh1SNWEBYnsAX-yJ4D4&tn=9mAXzOUxSqH8gdgA&_nc_ht=scontent.fcpq4-1.fna&oh=805b4311da2648fb395e2f6f8331da32&oe=61437C00"
+                    name={name}
+                    src={avatar_url}
                 />
             </WrapItem>
 
@@ -20,7 +25,7 @@ export function CardHeader() {
                     textTransform="uppercase"
                     ml="3"
                 >
-                    Leonardo Gabriel Sanches
+                    {name}
                 </Box>
             </Box>
 
