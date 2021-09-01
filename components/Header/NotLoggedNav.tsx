@@ -8,7 +8,7 @@ export function NotLoggedNav() {
                     fontSize={["xl", "xxl"]}
                     letterSpacing="tight"
                     color="green.500"
-                    _hover={{ color: "green.700" }}
+                    _hover={{ color: "green.600" }}
                 >
                     Cadastrar
                 </Text>
@@ -18,7 +18,7 @@ export function NotLoggedNav() {
                     fontSize={["xl", "xxl"]}
                     letterSpacing="tight"
                     color="green.500"
-                    _hover={{ color: "green.700" }}
+                    _hover={{ color: "green.600" }}
                 >
                     Login
                 </Text>

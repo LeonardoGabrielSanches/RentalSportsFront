@@ -1,9 +1,9 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import { Flex, SimpleGrid } from '@chakra-ui/react';
 import { PlayerCard } from '../../components/PlayerCard';
-import { Header } from '../../components/Header';
 import { Player } from '../../models/player';
 import api from '../../services/api';
+import { Header } from '../../components/Header';
 
 type PlayersPageProps = {
     players: Player[],
@@ -24,7 +24,7 @@ const PlayersPage: NextPage<PlayersPageProps> = ({ players }: PlayersPageProps) 
     );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
     const response = await api.get<Player[]>('player');
 
     return {

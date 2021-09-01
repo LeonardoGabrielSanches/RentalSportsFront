@@ -11,6 +11,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { Input } from '../components/Input';
 
 import goalKeeperImg from '../public/goalkeeper.png';
+import { Logo } from '../components/Header/Logo';
 
 type SignInFormData = {
   email: string;
@@ -31,7 +32,7 @@ const Login: NextPage = () => {
 
 
   const handleSignIn: SubmitHandler<SignInFormData> = async (data) => {
-    signIn(data);
+    await signIn(data);
   }
 
   return (
@@ -52,8 +53,8 @@ const Login: NextPage = () => {
         border="green"
         onSubmit={handleSubmit(handleSignIn)}
       >
-        <Stack spacing="4">
-          <Image src={goalKeeperImg} alt="Goalkeeper gloves" />
+        <Stack align="center" spacing="4">
+          <Logo />
 
           <Input
             label="E-mail"
@@ -78,6 +79,7 @@ const Login: NextPage = () => {
           >
             Entrar
           </Button>
+
         </Stack>
       </Flex>
     </Flex>

@@ -1,8 +1,9 @@
 import { useState, useEffect, createContext, ReactNode, useContext } from "react";
 import { useToast } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
-import { parseCookies, setCookie } from "nookies";
+import { parseCookies, setCookie, destroyCookie } from "nookies";
 import api from "../services/api";
+import { useCallback } from "react";
 
 type User = {
     name: string;
@@ -17,6 +18,7 @@ type SignInCredentials = {
 
 type AuthContextData = {
     signIn(credentials: SignInCredentials): Promise<void>;
+    signOut(): Promise<void>;
     isAuthenticated: boolean;
     user: User | undefined;
 }
@@ -34,17 +36,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const [user, setUser] = useState<User>();
     const isAuthenticated = !!user;
 
-    useEffect(() => {
-        const { '@Alugol:token': token } = parseCookies();
-
-        if (token) {
-            api.defaults.headers.Authorization = `Bearer ${token}`;
-            handleMe();
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    function handleMe() {
+    const handleMe = useCallback(() => {
         api.get('/me')
             .then(response => {
                 const { name, email, avatarUrl } = response.data;
@@ -54,25 +46,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     email,
                     avatarUrl
                 });
-
-                router.push('/players');
             })
-            .catch(error => {
+            .catch(() => {
                 toast({
                     title: "Erro ao recuperar informações de usuário.",
-                    description: error.response?.data.errors?.join(),
+                    description: 'Realize o login novamente.',
                     status: "error",
                     duration: 9000,
                     isClosable: true,
                     position: "top-right"
                 });
 
-                setCookie(undefined, '@Alugol:token', '', {
-                    maxAge: 60 * 60 * 24 * 30,
-                    path: '/'
-                });
+                destroyCookie(undefined, '@Alugol:token');
             });
-    }
+    }, [toast])
+
+    useEffect(() => {
+        const { '@Alugol:token': token } = parseCookies();
+
+        if (token) {
+            api.defaults.headers.Authorization = `Bearer ${token}`;
+            handleMe();
+        }
+    }, [handleMe]);
 
     async function signIn({ email, password }: SignInCredentials) {
         try {
@@ -80,6 +76,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 email,
                 password
             });
+
+            router.push('/players');
 
             const { name, token, avatarUrl } = response.data;
 
@@ -95,8 +93,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
             });
 
             api.defaults.headers.Authorization = `Bearer ${token}`;
-
-            router.push('/players')
         } catch (error) {
             toast({
                 title: "Erro ao realizar o login.",
@@ -109,8 +105,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
         }
     }
 
+    async function signOut(): Promise<void> {
+        setUser(undefined);
+        destroyCookie(undefined, '@Alugol:token');
+
+        router.push('/players');
+    }
+
     return (
-        <AuthContext.Provider value={{ signIn, isAuthenticated, user }}>
+        <AuthContext.Provider value={{ signIn, signOut, isAuthenticated, user }}>
             {children}
         </AuthContext.Provider>
     )
