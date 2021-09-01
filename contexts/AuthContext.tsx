@@ -1,9 +1,7 @@
+import { useState, useEffect, createContext, ReactNode, useContext } from "react";
 import { useToast } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { parseCookies, setCookie } from "nookies";
-import { useState } from "react";
-import { useEffect } from "react";
-import { createContext, ReactNode, useContext } from "react";
 import api from "../services/api";
 
 type User = {
@@ -40,9 +38,41 @@ export function AuthProvider({ children }: AuthProviderProps) {
         const { '@Alugol:token': token } = parseCookies();
 
         if (token) {
-            // Construir a rota /me no backend
+            api.defaults.headers.Authorization = `Bearer ${token}`;
+            handleMe();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    function handleMe() {
+        api.get('/me')
+            .then(response => {
+                const { name, email, avatarUrl } = response.data;
+
+                setUser({
+                    name,
+                    email,
+                    avatarUrl
+                });
+
+                router.push('/players');
+            })
+            .catch(error => {
+                toast({
+                    title: "Erro ao recuperar informações de usuário.",
+                    description: error.response?.data.errors?.join(),
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                    position: "top-right"
+                });
+
+                setCookie(undefined, '@Alugol:token', '', {
+                    maxAge: 60 * 60 * 24 * 30,
+                    path: '/'
+                });
+            });
+    }
 
     async function signIn({ email, password }: SignInCredentials) {
         try {
@@ -64,11 +94,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 name
             });
 
+            api.defaults.headers.Authorization = `Bearer ${token}`;
+
             router.push('/players')
         } catch (error) {
             toast({
                 title: "Erro ao realizar o login.",
-                description: error.response?.data.Errors?.join(),
+                description: error.response?.data.errors?.join(),
                 status: "error",
                 duration: 9000,
                 isClosable: true,

@@ -1,8 +1,12 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Link, Stack, Text } from "@chakra-ui/react";
+import { useAuth } from "../../contexts/AuthContext";
 import { Logo } from "./Logo";
+import { NotLoggedNav } from "./NotLoggedNav";
 import { Profile } from "./Profile";
 
 export function Header() {
+    const { isAuthenticated } = useAuth();
+
     return (
         <Flex
             as="header"
@@ -16,7 +20,11 @@ export function Header() {
             <Logo />
 
             <Flex align="center" ml="auto">
-                <Profile />
+                {isAuthenticated ? (
+                    <Profile />
+                ) : (
+                    <NotLoggedNav />
+                )}
             </Flex>
         </Flex>
     )

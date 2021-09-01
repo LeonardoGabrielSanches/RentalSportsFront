@@ -75,7 +75,6 @@ const Login: NextPage = () => {
             colorScheme="green"
             size="lg"
             isLoading={formState.isSubmitting}
-            loadingText="Enviando..."
           >
             Entrar
           </Button>
