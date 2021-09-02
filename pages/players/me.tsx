@@ -6,7 +6,9 @@ const Me: NextPage = () => {
     return (
         <Flex direction="column" h="100vh" >
             <Header />
-            <p>Sim</p>
+            <Flex w="100%" maxWidth={1400} mx="auto" >
+                <p>Sim</p>
+            </Flex>
         </Flex>
     );
 }

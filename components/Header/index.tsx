@@ -1,4 +1,4 @@
-import { Divider, Flex, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Link, Stack, Text } from "@chakra-ui/react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Logo } from "./Logo";
 import { NotLoggedNav } from "./NotLoggedNav";
@@ -8,7 +8,7 @@ export function Header() {
     const { isAuthenticated } = useAuth();
 
     return (
-        <>
+        <Box mb="6">
             <Flex
                 as="header"
                 w="100%"
@@ -30,6 +30,6 @@ export function Header() {
             </Flex>
 
             <Divider w="95%" mx="auto" />
-        </>
+        </Box>
     )
 };

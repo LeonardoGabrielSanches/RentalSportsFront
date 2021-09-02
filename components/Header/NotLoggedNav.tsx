@@ -1,4 +1,4 @@
-import { Link, Stack, Text } from "@chakra-ui/react";
+import { Center, Divider, Link, Stack, Text } from "@chakra-ui/react";
 
 export function NotLoggedNav() {
     return (
@@ -13,6 +13,11 @@ export function NotLoggedNav() {
                     Cadastrar
                 </Text>
             </Link>
+
+            <Center height="8">
+                <Divider orientation="vertical" />
+            </Center>
+
             <Link href="/login" _hover={{ textDecoration: "none" }}>
                 <Text
                     fontSize={["xl", "xxl"]}

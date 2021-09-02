@@ -13,7 +13,7 @@ const PlayersPage: NextPage<PlayersPageProps> = ({ players }: PlayersPageProps) 
     return (
         <Flex direction="column" h="100vh" >
             <Header />
-            <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
+            <Flex w="100%" maxWidth={1480} mx="auto" px="6">
                 <SimpleGrid flex="1" gap="2" minChildWidth="400px">
                     {players.map(player => (
                         <PlayerCard key={player.id} player={player} />
