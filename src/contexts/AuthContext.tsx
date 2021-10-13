@@ -1,14 +1,18 @@
-import { useState, useEffect, createContext, ReactNode, useContext } from "react";
+import { useState, useCallback, useEffect, createContext, ReactNode, useContext } from "react";
 import { useToast } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { parseCookies, setCookie, destroyCookie } from "nookies";
 import api from "../services/api";
-import { useCallback } from "react";
 
 type User = {
     name: string;
     email: string;
-    avatarUrl: string;
+    avatar: string;
+}
+
+type AuthenticateResponse = {
+    player: User;
+    token: string;
 }
 
 type SignInCredentials = {
@@ -37,14 +41,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const isAuthenticated = !!user;
 
     const handleMe = useCallback(() => {
-        api.get('/me')
+        api.get('/players/me')
             .then(response => {
-                const { name, email, avatarUrl } = response.data;
+                const { name, email, avatar } = response.data;
 
                 setUser({
                     name,
                     email,
-                    avatarUrl
+                    avatar
                 });
             })
             .catch(() => {
@@ -72,14 +76,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     async function signIn({ email, password }: SignInCredentials) {
         try {
-            const response = await api.post('/auth', {
+            const response = await api.post<AuthenticateResponse>('/authenticate', {
                 email,
                 password
             });
 
-            router.push('/players');
-
-            const { name, token, avatarUrl } = response.data;
+            const { player, token } = response.data;
 
             setCookie(undefined, '@Alugol:token', token, {
                 maxAge: 60 * 60 * 24 * 30,
@@ -87,16 +89,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
             });
 
             setUser({
-                avatarUrl,
+                avatar: player.avatar,
                 email,
-                name
+                name: player.name
             });
 
             api.defaults.headers.Authorization = `Bearer ${token}`;
-        } catch (error) {
+
+            router.push('/players');
+        } catch (error: any) {
             toast({
                 title: "Erro ao realizar o login.",
-                description: error.response?.data.errors?.join(),
+                description: error?.response?.data?.message,
                 status: "error",
                 duration: 9000,
                 isClosable: true,

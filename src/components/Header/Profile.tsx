@@ -18,7 +18,7 @@ export function Profile() {
                 </Text>
             </Box>
 
-            <Avatar size="md" name={user?.name} src={user?.avatarUrl} />
+            <Avatar size="md" name={user?.name} src={user?.avatar} />
 
             <Icon
                 as={FaPowerOff}

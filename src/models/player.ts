@@ -1,7 +1,8 @@
 export interface Player {
     id: string;
-    avatarUrl: string;
+    avatar: string;
     name: string;
+    email: string;
     mobileNumber: string;
     description: string;
 }
