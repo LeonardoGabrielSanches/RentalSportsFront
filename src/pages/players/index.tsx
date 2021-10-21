@@ -18,12 +18,12 @@ const PlayersPage: NextPage<PlayersPageProps> = ({ players }: PlayersPageProps) 
                 <title>Alugol | Jogadores</title>
             </Head>
 
-            <Flex direction="column" h="100vh" >
-                <Header />
+            <Flex direction="column" >
                 <Flex w="100%" maxWidth={1480} mx="auto" px="6">
                     <SimpleGrid flex="1" gap="2" minChildWidth="400px">
-                        {players.map(player => (
+                        {players?.map(player => (
                             <div key={player.id}>
+                                <PlayerCard player={player} />
                                 <PlayerCard player={player} />
                             </div>
 

@@ -50,7 +50,7 @@ const Login: NextPage = () => {
           as="form"
           w="100%"
           maxWidth="360"
-          bg="gray.600"
+          bg="whiteAlpha.300"
           p="8"
           borderRadius="8"
           flexDir="column"
@@ -58,8 +58,6 @@ const Login: NextPage = () => {
           onSubmit={handleSubmit(handleSignIn)}
         >
           <Stack align="center" spacing="4">
-            <Logo />
-
             <Input
               label="E-mail"
               type="email"
@@ -83,11 +81,6 @@ const Login: NextPage = () => {
             >
               Entrar
             </Button>
-
-            <Link href="/players" color="green.300" _hover={{ color: "green.500" }}>
-              Ver jogadores
-            </Link>
-
           </Stack>
         </Flex>
       </Flex>

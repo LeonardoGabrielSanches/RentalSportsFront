@@ -10,10 +10,10 @@ export function Profile() {
         <Flex align="center">
 
             <Box mr="4" textAlign="right">
-                <Link href="/players/me" _hover={{ color: "green.600" }}>
+                <Link href="/players/me" _hover={{ color: "whiteAlpha.600" }}>
                     <Text>{user?.name}</Text>
                 </Link>
-                <Text color="gray.300" fontSize="small">
+                <Text fontSize="small">
                     {user?.email}
                 </Text>
             </Box>
@@ -23,10 +23,9 @@ export function Profile() {
             <Icon
                 as={FaPowerOff}
                 ml="4"
-                color="green.500"
                 h="10"
                 w="8"
-                _hover={{ color: "green.600" }}
+                _hover={{ color: "whiteAlpha.600" }}
                 onClick={signOut}
             />
         </Flex>

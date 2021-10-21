@@ -9,7 +9,15 @@ type PlayerCardProps = {
 
 export function PlayerCard({ player }: PlayerCardProps) {
     return (
-        <Box height="80" borderWidth="1px" borderRadius="xl" overflow="hidden" p="5">
+        <Box
+            height="60"
+            borderWidth="1px"
+            borderRadius="xl"
+            overflow="hidden"
+            p="5"
+            backgroundColor="whiteAlpha.300"
+            m="2"
+        >
             <CardHeader name={player.name} avatar_url={player.avatar} />
 
             <CardBody description={player.description} mobile_number={player.mobileNumber} />

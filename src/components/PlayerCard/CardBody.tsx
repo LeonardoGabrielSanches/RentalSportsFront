@@ -8,7 +8,7 @@ type CardBodyProps = {
 
 export function CardBody({ description, mobile_number }: CardBodyProps) {
     return (
-        <Stack mt="2" height="65%" justify="space-between">
+        <Stack mt="2" height="50%" justify="space-between">
             <Box
                 fontWeight="semibold"
                 as="h4"
@@ -30,7 +30,7 @@ export function CardBody({ description, mobile_number }: CardBodyProps) {
                         aria-label="whatsapp"
                         background="transparent"
                         _hover={{
-                            bg: 'gray.700'
+                            bg: 'whiteAlpha.300'
                         }}
                         icon={<FaWhatsapp size="30px" />}
                     />

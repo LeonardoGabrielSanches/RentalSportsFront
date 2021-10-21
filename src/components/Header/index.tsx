@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, } from "@chakra-ui/react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Logo } from "./Logo";
 import { NotLoggedNav } from "./NotLoggedNav";
@@ -28,8 +28,6 @@ export function Header() {
                     )}
                 </Flex>
             </Flex>
-
-            <Divider w="95%" mx="auto" />
         </Box>
     )
 };

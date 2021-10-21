@@ -133,8 +133,7 @@ const New: NextPage = () => {
                 <title>Alugol | Cadastro</title>
             </Head>
 
-            <Flex direction="column" h="100vh" >
-                <Header />
+            <Flex direction="column">
                 <Flex w="100%" maxWidth={1280} mx="auto">
                     <Box
                         as="form"
