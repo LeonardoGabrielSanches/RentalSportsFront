@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { Flex, Stack, Button, Link } from '@chakra-ui/react';
+import { Flex, Stack, Button } from '@chakra-ui/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Head from 'next/head';
 
@@ -9,8 +9,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useAuth } from '../contexts/AuthContext';
 
 import { Input } from '../components/Input';
-
-import { Logo } from '../components/Header/Logo';
 
 type SignInFormData = {
   email: string;
