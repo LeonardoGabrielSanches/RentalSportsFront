@@ -4,7 +4,6 @@ import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import { useWatch } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import { Header } from "../../components/Header";
 import { ImagePicker } from "../../components/ImagePicker/ImagePicker";
 import { Input } from "../../components/Input";
 import { TextArea } from "../../components/TextArea";

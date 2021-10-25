@@ -78,7 +78,7 @@ const ImagePickerBase: ForwardRefRenderFunction<
 
                 setImageUrl('');
                 setLocalImageUrl('');
-                setError('image', null);
+                setError('image', {});
                 setIsSending(true);
 
                 await onChange(event);
@@ -87,7 +87,7 @@ const ImagePickerBase: ForwardRefRenderFunction<
                 const formData = new FormData();
 
                 formData.append(event.target.name, event.target.files[0]);
-                formData.append('key', process.env.NEXT_PUBLIC_IMGBB_API_KEY);
+                formData.append('key', process.env.NEXT_PUBLIC_IMGBB_API_KEY ?? '');
 
                 const { CancelToken } = axios;
                 const source = CancelToken.source();
