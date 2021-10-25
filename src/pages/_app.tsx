@@ -13,8 +13,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           direction="column"
           w="100vw"
           h="100vh"
-          backgroundImage="url('https://i.ibb.co/5j1YzvF/image.png')"
-          backgroundSize="cover"
         >
           <Header />
           <Component {...pageProps} />

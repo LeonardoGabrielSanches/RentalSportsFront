@@ -134,11 +134,11 @@ const New: NextPage = () => {
             </Head>
 
             <Flex direction="column">
-                <Flex w="100%" maxWidth={1280} mx="auto">
+                <Flex w="80%" maxWidth={1280} mx="auto">
                     <Box
                         as="form"
                         w="100%"
-                        bg="gray.600"
+                        bg="whiteAlpha.300"
                         p="8"
                         mb="8"
                         borderRadius="8"

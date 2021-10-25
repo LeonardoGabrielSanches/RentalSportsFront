@@ -162,8 +162,8 @@ const ImagePickerBase: ForwardRefRenderFunction<
                             justifyContent="center"
                             alignItems="center"
                             borderRadius="md"
-                            bgColor="green.800"
-                            color="green.200"
+                            bgColor="whiteAlpha.400"
+                            color="green.500"
                             borderWidth={error?.message && 2}
                             borderColor={error?.message && 'red.500'}
                         >

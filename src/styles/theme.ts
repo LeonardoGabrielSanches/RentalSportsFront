@@ -5,6 +5,8 @@ export const theme = extendTheme({
         global: {
             body: {
                 color: 'white',
+                backgroundImage: "url('https://i.ibb.co/5j1YzvF/image.png')",
+                backgroundRepeat: 'no-repeat',
             }
         }
     }
