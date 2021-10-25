@@ -2,24 +2,18 @@ import { Flex, Box, Text, Button } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { Testimony } from "../components/Testimony";
 import Head from 'next/head';
+import { hotjar } from 'react-hotjar';
+import { useEffect } from "react";
 
 const Home: NextPage = () => {
+    useEffect(() => {
+        hotjar.initialize(Number(process.env.NEXT_PUBLIC_HOTJAR_ID), Number(process.env.NEXT_PUBLIC_HOTJAR_SV));
+    }, []);
+
     return (
         <>
             <Head>
                 <title>Alugol | Login</title>
-
-
-                <script>
-                    (function(h,o,t,j,a,r){
-                        h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-                    h._hjSettings={hjid:2669307,hjsv:6};
-                    a=o.getElementsByTagName('head')[0];
-                    r=o.createElement('script');r.async=1;
-                    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                    a.appendChild(r);
-                    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-                </script>
             </Head>
 
             <Flex maxW={1400} mx="auto" flexDir="column">
