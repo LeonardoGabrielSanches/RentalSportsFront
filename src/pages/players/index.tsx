@@ -24,9 +24,7 @@ const PlayersPage: NextPage<PlayersPageProps> = ({ players }: PlayersPageProps) 
                         {players?.map(player => (
                             <div key={player.id}>
                                 <PlayerCard player={player} />
-                                <PlayerCard player={player} />
                             </div>
-
                         ))}
                     </SimpleGrid>
                 </Flex>
