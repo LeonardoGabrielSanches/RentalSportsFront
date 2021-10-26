@@ -223,6 +223,7 @@ const New: NextPage = () => {
                         <Stack mt="8" direction="row" maxWidth="80%" mx="auto">
                             <Input
                                 label="Latitude"
+                                type="number"
                                 {...register('latitude')}
                                 name="latitude"
                                 error={formState.errors.latitude}
@@ -230,6 +231,7 @@ const New: NextPage = () => {
 
                             <Input
                                 label="Longitude"
+                                type="number"
                                 {...register('longitude')}
                                 name="longitude"
                                 error={formState.errors.longitude}
