@@ -3,7 +3,6 @@ import { Flex, SimpleGrid } from '@chakra-ui/react';
 import { PlayerCard } from '../../components/PlayerCard';
 import { Player } from '../../models/player';
 import api from '../../services/api';
-import { Header } from '../../components/Header';
 
 import Head from 'next/head';
 

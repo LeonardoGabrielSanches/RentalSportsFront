@@ -103,7 +103,7 @@ const New: NextPage = () => {
             toast({
                 title: "Usuário cadastrado com sucesso.",
                 description: "Realize o login para utilizar a aplicação",
-                status: "error",
+                status: "success",
                 duration: 9000,
                 isClosable: true,
                 position: "top-right"
