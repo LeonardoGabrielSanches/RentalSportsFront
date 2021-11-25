@@ -4,11 +4,18 @@ import { Testimony } from "../components/Testimony";
 import Head from 'next/head';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from "react";
+import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
     useEffect(() => {
         hotjar.initialize(Number(process.env.NEXT_PUBLIC_HOTJAR_ID), Number(process.env.NEXT_PUBLIC_HOTJAR_SV));
     }, []);
+
+    const router = useRouter();
+
+    function navigateToPlayers(){
+        router.push('players');
+    }
 
     return (
         <>
@@ -26,6 +33,7 @@ const Home: NextPage = () => {
                         mt="8"
                         p="4"
                         colorScheme="green"
+                        onClick={navigateToPlayers}
                     >
                         Ver Jogadores
                     </Button>

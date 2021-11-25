@@ -149,7 +149,8 @@ const New: NextPage = () => {
                             fontSize="30"
                             maxWidth="30%"
                             mx="auto"
-                            mb="8"
+                            mb="4"
+                            textAlign="center"
                         >
                             Informações Cadastrais
                         </Text>
@@ -182,7 +183,7 @@ const New: NextPage = () => {
                             />
                         </Stack>
 
-                        <Stack mt="8" direction="row" maxWidth="80%" mx="auto">
+                        <Stack mt="4" direction="row" maxWidth="80%" mx="auto">
                             <Input
                                 label="Número celular com DDD"
                                 type="tel"
@@ -200,7 +201,7 @@ const New: NextPage = () => {
                             />
                         </Stack>
 
-                        <Stack mt="8" direction="row" maxWidth="80%" mx="auto">
+                        <Stack mt="4" direction="row" maxWidth="80%" mx="auto">
                             <Input
                                 label="Altura"
                                 type="number"
@@ -220,7 +221,7 @@ const New: NextPage = () => {
                             />
                         </Stack>
 
-                        <Stack mt="8" direction="row" maxWidth="80%" mx="auto">
+                        <Stack mt="4" direction="row" maxWidth="80%" mx="auto">
                             <Input
                                 label="Latitude"
                                 type="number"
@@ -238,7 +239,7 @@ const New: NextPage = () => {
                             />
                         </Stack>
 
-                        <Box mt="8" maxWidth="80%" mx="auto">
+                        <Box mt="4" maxWidth="80%" mx="auto">
                             <TextArea
                                 label="Descrição"
                                 maxLength={175}
@@ -249,7 +250,7 @@ const New: NextPage = () => {
                             />
                         </Box>
 
-                        <Stack mt="8" direction="row" maxWidth="80%" mx="auto">
+                        <Stack mt="4" direction="row" maxWidth="80%" mx="auto">
                             <Input
                                 label="Senha"
                                 type="password"
@@ -267,7 +268,7 @@ const New: NextPage = () => {
                             />
                         </Stack>
 
-                        <Box mt="8" ml="48">
+                        <Box mt="4" ml="48">
                             <Button
                                 type="submit"
                                 colorScheme="green"
